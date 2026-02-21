@@ -182,62 +182,52 @@ fun InstallDialog(
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 4.dp)
+                        .padding(top = 4.dp, bottom = 8.dp)
                 ) {
                     items(installers.size) { index ->
                         val pluginInstaller = installers[index]
 
-                        ElevatedCard(
-                            modifier = Modifier.fillMaxWidth(),
-                            colors = CardDefaults.elevatedCardColors(
-                                containerColor = MaterialTheme.colorScheme.surfaceContainerLow
-                            )
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 8.dp),
+                            verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(14.dp),
-                                verticalAlignment = Alignment.CenterVertically
+
+                            Icon(
+                                imageVector = Icons.Outlined.Extension,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(28.dp)
+                            )
+
+                            Spacer(modifier = Modifier.width(12.dp))
+
+                            Column(
+                                modifier = Modifier.weight(1f)
                             ) {
-
-                                // ICON
-                                Icon(
-                                    imageVector = Icons.Outlined.Extension,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary,
-                                    modifier = Modifier.size(28.dp)
+                                Text(
+                                    text = pluginInstaller.uri.resolveDisplayName(LocalContext.current),
+                                    style = MaterialTheme.typography.bodyLarge,
+                                    maxLines = 1
                                 )
-
-                                Spacer(modifier = Modifier.width(12.dp))
-
-                                // TEXT INFO
-                                Column(
-                                    modifier = Modifier.weight(1f)
-                                ) {
-                                    Text(
-                                        text = pluginInstaller.uri.resolveDisplayName(LocalContext.current),
-                                        style = MaterialTheme.typography.bodyLarge,
-                                        maxLines = 1
-                                    )
-                                    Text(
-                                        text = if (pluginInstaller.autoEnable)
-                                            stringResource(R.string.auto_enable_plugin)
-                                        else
-                                            stringResource(R.string.manual_enable_plugin),
-                                        style = MaterialTheme.typography.bodySmall,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                                    )
-                                }
-
-                                // SWITCH
-                                Switch(
-                                    checked = pluginInstaller.autoEnable,
-                                    onCheckedChange = { checked ->
-                                        installers[index] =
-                                            pluginInstaller.copy(autoEnable = checked)
-                                    }
+                                Text(
+                                    text = if (pluginInstaller.autoEnable)
+                                        stringResource(R.string.auto_enable_plugin)
+                                    else
+                                        stringResource(R.string.manual_enable_plugin),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
                             }
+
+                            Switch(
+                                checked = pluginInstaller.autoEnable,
+                                onCheckedChange = { checked ->
+                                    installers[index] =
+                                        pluginInstaller.copy(autoEnable = checked)
+                                }
+                            )
                         }
                     }
                 }
@@ -403,7 +393,7 @@ fun FlashScreen(
                             baseDir.mkdirs()
                         }
 
-                        val file = File(baseDir, "AxManager_install_log_${date}.log")
+                        val file = File(baseDir, "FolkPure_install_log_${date}.log")
 
                         try {
                             val fos = Axeron.newFileService()

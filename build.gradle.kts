@@ -17,7 +17,7 @@ apply(from = "api/manifest.gradle.kts")
 val gitCommitCount = providers.exec {
     commandLine("git", "rev-list", "--count", "HEAD")
 }.standardOutput.asText.get().trim().toInt()
-val verCode = findProperty("api_version_code") as Int
+val apiVersionCode = findProperty("api_version")?.toString()?.toIntOrNull() ?: 13180
 val verName = "${findProperty("api_version_name")}.r${gitCommitCount}"
 
 subprojects {
@@ -29,7 +29,7 @@ subprojects {
             defaultConfig {
                 minSdk = 26
                 targetSdk = 36
-                versionCode = verCode
+                versionCode = apiVersionCode
                 versionName = verName
             }
             compileOptions {

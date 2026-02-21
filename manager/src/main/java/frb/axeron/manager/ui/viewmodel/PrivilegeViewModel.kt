@@ -14,6 +14,7 @@ import androidx.lifecycle.application
 import androidx.lifecycle.viewModelScope
 import frb.axeron.api.Axeron
 import frb.axeron.manager.ui.util.HanziToPinyin
+import frb.axeron.manager.ui.viewmodel.AppsViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -50,6 +51,7 @@ class PrivilegeViewModel(application: Application) : AndroidViewModel(applicatio
 
                 !isSystem && !isSelf
             }
+            .sortedWith(compareByDescending<AppsViewModel.AppInfo> { it.isAdded }.thenBy { it.label })
             .toList()
             .also { isRefreshing = false }
     }

@@ -26,7 +26,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AxManager"
+rootProject.name = "FolkPure"
 include(":manager")
 include(":server")
 include(":adb")

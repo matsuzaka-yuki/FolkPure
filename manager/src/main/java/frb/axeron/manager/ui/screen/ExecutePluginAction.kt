@@ -147,7 +147,7 @@ fun ExecutePluginActionScreen(
                                 baseDir.mkdirs()
                             }
 
-                            val file = File(baseDir, "AxManager_action_log_${date}.log")
+                            val file = File(baseDir, "FolkPure_action_log_${date}.log")
 
                             try {
                                 val fos = Axeron.newFileService()

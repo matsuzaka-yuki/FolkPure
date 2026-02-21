@@ -67,7 +67,7 @@ class AxeronApplication : Engine() {
                 .addInterceptor { block ->
                     block.proceed(
                         block.request().newBuilder()
-                            .header("User-Agent", "AxManager/${BuildConfig.VERSION_CODE}")
+                            .header("User-Agent", "FolkPure/${BuildConfig.VERSION_CODE}")
                             .header("Accept-Language", Locale.getDefault().toLanguageTag()).build()
                     )
                 }.build()

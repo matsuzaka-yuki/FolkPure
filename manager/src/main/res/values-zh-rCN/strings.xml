@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AxManager</string>
+    <string name="app_name">FolkPure</string>
     <string name="home_running">运行中</string>
     <string name="notification_warn_miui">MIUI用户可能需要将通知切换为原生样式。</string>
     <string name="notification_warn_miui_2">否则您可能无法从通知中输入配对码。</string>
@@ -9,6 +9,7 @@
     <string name="android_properties">安卓属性</string>
     <string name="axeron_environment">Axeron 环境</string>
     <string name="search_label">搜索</string>
+    <string name="search_settings">搜索设置</string>
     <string name="home">主页</string>
     <string name="privilege">特权</string>
     <string name="privilege_plural">特权</string>
@@ -39,7 +40,7 @@
     <string name="plugin_update_json_empty">无</string>
     <string name="ignite">重载</string>
     <string name="what_is_ignite">什么是重载？</string>
-    <string name="what_is_ignite_msg"><![CDATA[重载是 AxManager 中替代重启的方式，您可以在主页右上角的关机按钮里选择重载]]></string>
+    <string name="what_is_ignite_msg"><![CDATA[重载是 FolkPure 中替代重启的方式，您可以在主页右上角的关机按钮里选择重载]]></string>
     <string name="understand">我知道了</string>
     <string name="re_ignite_now">立刻重载</string>
     <string name="install">安装</string>
@@ -78,7 +79,7 @@
     <string name="enable_notification">授予通知权限</string>
     <string name="start_pairing">开始配对</string>
     <string name="activate_by_root">直接激活（仅限拥有 Root 权限的设备）</string>
-    <string name="activate_by_root_msg"><![CDATA[此外，AxManager 还可以通过 Root 权限实现开机自启。如果未实现，请检查系统或 Root 管理器是否限制了 AxManager。<br>您可以参考%s。]]></string>
+    <string name="activate_by_root_msg"><![CDATA[此外，FolkPure 还可以通过 Root 权限实现开机自启。如果未实现，请检查系统或 Root 管理器是否限制了 FolkPure。<br>您可以参考%s。]]></string>
     <string name="adb_tcp_not_ready">端口未就绪 %d</string>
     <string name="adb_tcp_stopped">停止端口成功</string>
     <string name="failed_to_stop_adb_tcp">无法停止端口</string>
@@ -112,7 +113,7 @@
     <string name="ask_install_plugin_msg">将安装以下插件：</string>
     <string name="auto_enable_plugin">安装后自动启用</string>
     <string name="manual_enable_plugin">安装后保持禁用</string>
-    <string name="log_error_code">错误代码: %d\n%s请保存并检查日志。\n</string>
+    <string name="log_error_code">错误代码: %1$d\n%2$s请保存并检查日志。\n</string>
     <string name="re_ignite_and_close"><![CDATA[重载并关闭]]></string>
     <string name="restart_and_close"><![CDATA[重启并关闭]]></string>
     <string name="flashing">刷入中</string>
@@ -120,9 +121,9 @@
     <string name="failed">失败</string>
     <string name="idle">空闲</string>
     <string name="support_me">支持作者</string>
-    <string name="support_me_msg">AxManager 是完全免费且开源的。如果您觉得它有用，请关注该项目并考虑在 GitHub 上点亮 Star 。</string>
-    <string name="learn_more">关于 AxManager</string>
-    <string name="learn_more_msg">了解如何使用 AxManager 以及如何制作插件</string>
+    <string name="support_me_msg">FolkPure 是完全免费且开源的。如果您觉得它有用，请关注该项目并考虑在 GitHub 上点亮 Star 。</string>
+    <string name="learn_more">关于 FolkPure</string>
+    <string name="learn_more_msg">了解如何使用 FolkPure 以及如何制作插件</string>
     <string name="updating">更新中…</string>
     <string name="server_updating_version" formatted="false"><![CDATA[更新中: %d → %d]]></string>
     <string name="version_pid" formatted="false">版本: %d | 进程ID: %d</string>
@@ -131,7 +132,7 @@
     <string name="home_need_fix">需要额外的步骤</string>
     <string name="home_need_fix_msg">点击查看修复方法</string>
     <string name="home_not_running">未激活</string>
-    <string name="home_not_running_msg">点击以激活 AxManager</string>
+    <string name="home_not_running_msg">点击以激活 FolkPure</string>
     <string name="home_update">需要重启</string>
     <string name="new_version_available">发现新版本 %s，点击更新。</string>
     <string name="android_version">Android 版本</string>
@@ -144,7 +145,7 @@
     <string name="search_label_apps">搜索应用</string>
     <string name="quick_shell">快速终端</string>
     <string name="quick_shell_short">QShell</string>
-    <string name="quick_shell_not_supported">请先激活 AxManager</string>
+    <string name="quick_shell_not_supported">请先激活 FolkPure</string>
     <string name="save">保存</string>
     <string name="exec">执行</string>
     <string name="send">分享</string>
@@ -164,7 +165,7 @@
     <string name="axeron_permission">AX-权限接管</string>
     <string name="axeron_permission_desc">使用基于 Shizuku-API 构建的 Ax-Environment 接管授权请求</string>
     <string name="tcp_mode">无线调试模式</string>
-    <string name="tcp_mode_desc">允许 AxManager 在没有 Wi-Fi 的情况下自动激活（AxManager 在开机后至少激活过一次）</string>
+    <string name="tcp_mode_desc">允许 FolkPure 在没有 Wi-Fi 的情况下自动激活（FolkPure 在开机后至少激活过一次）</string>
     <string name="invalid_port">端口必须介于 1024 和 65535 之间</string>
     <string name="reactive_to_apply">重新激活以应用更改</string>
     <string name="active_on_boot">开机自启</string>
@@ -173,18 +174,17 @@
     <string name="please_wait">请稍候…</string>
     <string name="view_command_message">`%s`\n\n还有其他注意事项，请确认您已阅读步骤指南。</string>
     <string name="activate_by_computer">通过电脑命令行激活</string>
-    <string name="activate_by_computer_desc">对于没有 Root 的设备，需要使用 ADB 激活 AxManager（需要连接电脑）。每次设备重启后都需要重复此操作。</string>
+    <string name="activate_by_computer_desc">对于没有 Root 的设备，需要使用 ADB 激活 FolkPure（需要连接电脑）。每次设备重启后都需要重复此操作。</string>
     <string name="activate_by_wireless">通过无线调试激活</string>
-    <string name="activate_by_wireless_desc">在 Android 11 或更高版本上，您可以通过无线调试激活 AxManager，而无需连接到计算机。\n\n请先查看步骤指南。</string>
     <string name="view_command">查看命令</string>
     <string name="share_command">分享命令</string>
-    <string name="active_on_boot_desc">设备开机时自动激活 AxManager（实验性功能，通过 Android 11+ 上的 Root/ADB 实现）</string>
+    <string name="active_on_boot_desc">设备开机时自动激活 FolkPure（实验性功能，通过 Android 11+ 上的 Root/ADB 实现）</string>
     <string name="ignite_when_relog">自动重载</string>
-    <string name="ignite_when_relog_desc">启动 AxManager 时将尝试自动激活服务</string>
-    <string name="reset_path">重置 AxManager</string>
-    <string name="reset_path_desc">此操作将恢复 AxManager 至初始状态并删除您的所有插件</string>
-    <string name="ask_reset_path">立即重置 AxManager？</string>
-    <string name="ask_reset_path_desc">此操作将恢复 AxManager 至初始状态并删除您的所有插件\n\n目录 %s</string>
+    <string name="ignite_when_relog_desc">启动 FolkPure 时将尝试自动激活服务</string>
+    <string name="reset_path">重置 FolkPure</string>
+    <string name="reset_path_desc">此操作将恢复 FolkPure 至初始状态并删除您的所有插件</string>
+    <string name="ask_reset_path">立即重置 FolkPure？</string>
+    <string name="ask_reset_path_desc">此操作将恢复 FolkPure 至初始状态并删除您的所有插件\n\n目录 %s</string>
     <string name="reset">重置</string>
     <string name="settings_editor">设置编辑器</string>
     <string name="developer_and_maintainer">开发者 | 维护者</string>
@@ -208,4 +208,30 @@
     <string name="permission_dont_allow">拒绝</string>
     <string name="permission_dont_allow_countdown">拒绝 (%d秒)</string>
     <string name="uid_value">进程ID: %d</string>
+    <string name="home_click_to_install">点击安装</string>
+    <string name="home_device_info">设备信息</string>
+    <string name="home_kernel">内核</string>
+    <string name="home_system_version">系统版本</string>
+    <string name="home_selinux_status">SELinux 状态</string>
+    <string name="settings_category_connection">连接</string>
+    <string name="settings_category_activation">激活</string>
+    <string name="settings_category_path">路径</string>
+    <string name="settings_category_other">其他</string>
+    <string name="settings_category_appearance">外观</string>
+    <string name="light_theme">浅色</string>
+    <string name="dark_theme">深色</string>
+    <string name="color_palette_dialog_title">调色板</string>
+    <string name="tab_wheel">色轮</string>
+    <string name="tab_rgb">RGB</string>
+    <string name="hex_label">十六进制</string>
+    <string name="confirm">确认</string>
+    <string name="settings_check_update">检查更新</string>
+    <string name="settings_auto_update_check">自动检查更新</string>
+    <string name="settings_auto_update_check_summary">应用启动时自动检查更新</string>
+    <string name="update_available_title">有可用更新</string>
+    <string name="update_available_message">检测到您的版本过低，是否下载新版本？</string>
+    <string name="update_action">更新</string>
+    <string name="update_close">关闭</string>
+    <string name="update_latest">您已是最新版本</string>
+    <string name="update_error">检查更新时出错</string>
 </resources>

@@ -171,12 +171,12 @@ fun SettingsEditorScreen(
             SearchAppBar(
                 title = {
                     Text(
-                        text = "Settings Editor",
+                        text = stringResource(R.string.settings_editor),
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.SemiBold
                     )
                 },
-                searchLabel = "Search Settings",
+                searchLabel = stringResource(R.string.search_settings),
                 searchText = query,
                 onSearchTextChange = { query = it },
                 onClearClick = { query = "" },
@@ -355,7 +355,7 @@ fun RoundedTabRow(
                 if (isSelected)
                     MaterialTheme.colorScheme.onPrimary
                 else
-                    MaterialTheme.colorScheme.onSurfaceVariant
+                    MaterialTheme.colorScheme.onSurface
             )
 
             Tab(

@@ -19,7 +19,7 @@ class AxManagerProvider : AxeronProvider() {
     companion object {
         private const val EXTRA_BINDER = "moe.shizuku.privileged.api.intent.extra.BINDER"
         private const val METHOD_SEND_USER_SERVICE = "sendUserService"
-        private val LOGGER = Logger("AxManagerProvider")
+        private val LOGGER = Logger("FolkPureProvider")
     }
 
     override fun call(method: String, arg: String?, extras: Bundle?): Bundle? {

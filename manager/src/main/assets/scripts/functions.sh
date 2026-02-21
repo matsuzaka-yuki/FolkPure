@@ -89,7 +89,7 @@ set_perm_recursive() {
 reset_manager() {
   local debug=$1
 
-  print_title "Resetting AxManager"
+  print_title "Resetting FolkPure"
   ui_print
   ui_print "$AXERONDIR"
   ui_print "- Removing plugins"
@@ -113,7 +113,7 @@ uninstall_axmanager() {
   local debug=$1
   local package=$2
 
-  print_title "Uninstalling AxManager"
+  print_title "Uninstalling FolkPure"
   ui_print
 
   for plugin in "$AXERONDIR"/plugins/*; do
@@ -155,9 +155,9 @@ install_plugin() {
   MODAUTH=$(grep_prop author "$TMPPROP")
   MODPLUGIN=$(grep_prop axeronPlugin "$TMPPROP")
   
-  [ -z "$MODPLUGIN" ] && abort "! This module not supporting AxManager Plugin!"
+  [ -z "$MODPLUGIN" ] && abort "! This module not supporting FolkPure Plugin!"
 
-  [ "$MODPLUGIN" -gt "$AXERONVER" ] && abort "! This module need AxManager Version >= $MODPLUGIN!"
+  [ "$MODPLUGIN" -gt "$AXERONVER" ] && abort "! This module need FolkPure Version >= $MODPLUGIN!"
 
   MODPATH=$MODROOT/$MODID
   MODPATH_UPDATE=$MODROOT_UPDATE/$MODID
@@ -166,7 +166,7 @@ install_plugin() {
   mkdir -p "$MODPATH"
   
   print_title "$MODNAME" "by $MODAUTH"
-  print_title "Powered by AxManager"
+  print_title "Powered by FolkPure"
 
   unzip -o "$ZIPFILE" customize.sh -d "$MODPATH" >&2
 

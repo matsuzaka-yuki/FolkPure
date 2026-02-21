@@ -23,6 +23,7 @@ import androidx.compose.material3.Slider
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -39,6 +40,7 @@ import androidx.compose.ui.unit.dp
 import com.github.skydoves.colorpicker.compose.BrightnessSlider
 import com.github.skydoves.colorpicker.compose.HsvColorPicker
 import com.github.skydoves.colorpicker.compose.rememberColorPickerController
+import frb.axeron.manager.R
 import frb.axeron.manager.ui.theme.hexToColor
 import kotlin.math.roundToInt
 
@@ -72,7 +74,7 @@ fun PaletteDialog(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                Text("Color Palette")
+                Text(stringResource(R.string.color_palette_dialog_title))
                 Box(
                     modifier = Modifier
                         .size(24.dp)
@@ -94,12 +96,12 @@ fun PaletteDialog(
                     Tab(
                         selected = selectedTab == 0,
                         onClick = { selectedTab = 0 },
-                        text = { Text("Wheel") }
+                        text = { Text(stringResource(R.string.tab_wheel)) }
                     )
                     Tab(
                         selected = selectedTab == 1,
                         onClick = { selectedTab = 1 },
-                        text = { Text("RGB") }
+                        text = { Text(stringResource(R.string.tab_rgb)) }
                     )
                 }
 
@@ -174,7 +176,7 @@ fun PaletteDialog(
                             blueValue = color.blue * 255
                         }
                     },
-                    label = { Text("Hex") },
+                    label = { Text(stringResource(R.string.hex_label)) },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Ascii)
@@ -192,16 +194,16 @@ fun PaletteDialog(
         },
         confirmButton = {
             TextButton(onClick = { onConfirm(colorToHex(selectedColor)) }) {
-                Text("Confirm")
+                Text(stringResource(R.string.confirm))
             }
         },
         dismissButton = {
             Row {
                 TextButton(onClick = onReset) {
-                    Text("Reset")
+                    Text(stringResource(R.string.reset))
                 }
                 TextButton(onClick = onDismiss) {
-                    Text("Cancel")
+                    Text(stringResource(R.string.cancel))
                 }
             }
         }

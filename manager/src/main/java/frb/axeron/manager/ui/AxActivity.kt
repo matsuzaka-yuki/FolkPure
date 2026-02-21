@@ -14,10 +14,15 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
@@ -43,6 +48,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.pm.ShortcutInfoCompat
@@ -83,7 +89,7 @@ import frb.axeron.server.PluginInstaller
 class AxActivity : ComponentActivity() {
 
     companion object {
-        const val OPEN_QUICK_SHELL = "AxManager.QUICK_SHELL"
+        const val OPEN_QUICK_SHELL = "FolkPure.QUICK_SHELL"
     }
 
     override fun attachBaseContext(newBase: Context) {
@@ -136,6 +142,8 @@ class AxActivity : ComponentActivity() {
         val navController = rememberNavController()
         val navigator = navController.rememberDestinationsNavigator()
         val currentDestination = navController.currentBackStackEntryAsState().value?.destination
+
+        val context = LocalContext.current
 
         val activateViewModel: ActivateViewModel = viewModel<ActivateViewModel>()
 
@@ -215,10 +223,14 @@ class AxActivity : ComponentActivity() {
         }
 
         val showBottomBar = when (currentDestination?.route) {
-            ActivateScreenDestination.route -> false // Hide for Activate
-            FlashScreenDestination.route -> false // Hide for Flash
-            ExecutePluginActionScreenDestination.route -> false // Hide for ExecutePluginAction
+            ActivateScreenDestination.route -> false
+            FlashScreenDestination.route -> false
+            ExecutePluginActionScreenDestination.route -> false
             else -> true
+        }
+
+        val bottomBarRoutes = remember {
+            BottomBarDestination.entries.map { it.direction.route }.toSet()
         }
 
         Box {
@@ -237,12 +249,7 @@ class AxActivity : ComponentActivity() {
                         dependenciesContainerBuilder = {
                             dependency(viewModelGlobal)
                         },
-                        defaultTransitions = object : NavHostAnimatedDestinationStyle() {
-                            override val enterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition
-                                get() = { fadeIn(animationSpec = tween(300)) }
-                            override val exitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition
-                                get() = { fadeOut(animationSpec = tween(300)) }
-                        }
+                        defaultTransitions = createNavTransitions(bottomBarRoutes)
                     )
                 }
             }
@@ -259,6 +266,81 @@ class AxActivity : ComponentActivity() {
                     activateViewModel.axeronInfo,
                     pluginViewModel.pluginUpdateCount
                 )
+            }
+        }
+    }
+
+    @Composable
+    private fun createNavTransitions(
+        bottomBarRoutes: Set<String>
+    ): NavHostAnimatedDestinationStyle {
+        return object : NavHostAnimatedDestinationStyle() {
+            override val enterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition = {
+                if (targetState.destination.route !in bottomBarRoutes) {
+                    slideInHorizontally(initialOffsetX = { it })
+                } else {
+                    val initialRoute = initialState.destination.route
+                    val targetRoute = targetState.destination.route
+                    val initialIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == initialRoute }
+                    val targetIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == targetRoute }
+
+                    val stiffness = 300f
+                    val duration300 = 300
+
+                    if (initialIndex != -1 && targetIndex != -1) {
+                        if (targetIndex > initialIndex) {
+                            slideInHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetX = { width -> width })
+                        } else {
+                            slideInHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetX = { width -> -width })
+                        }
+                    } else {
+                        fadeIn(animationSpec = tween(340))
+                    }
+                }
+            }
+
+            override val exitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition = {
+                if (initialState.destination.route in bottomBarRoutes && targetState.destination.route !in bottomBarRoutes) {
+                    slideOutHorizontally(targetOffsetX = { -it / 4 }) + fadeOut()
+                } else {
+                    if (initialState.destination.route in bottomBarRoutes && targetState.destination.route in bottomBarRoutes) {
+                        val initialRoute = initialState.destination.route
+                        val targetRoute = targetState.destination.route
+                        val initialIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == initialRoute }
+                        val targetIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == targetRoute }
+
+                        val stiffness = 300f
+                        val duration300 = 300
+
+                        if (initialIndex != -1 && targetIndex != -1) {
+                            if (targetIndex > initialIndex) {
+                                slideOutHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), targetOffsetX = { width -> -width })
+                            } else {
+                                slideOutHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), targetOffsetX = { width -> width })
+                            }
+                        } else {
+                            fadeOut(animationSpec = tween(340))
+                        }
+                    } else {
+                        fadeOut(animationSpec = tween(340))
+                    }
+                }
+            }
+
+            override val popEnterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition = {
+                if (targetState.destination.route in bottomBarRoutes) {
+                    slideInHorizontally(initialOffsetX = { -it / 4 }) + fadeIn()
+                } else {
+                    fadeIn(animationSpec = tween(340))
+                }
+            }
+
+            override val popExitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition = {
+                if (initialState.destination.route !in bottomBarRoutes) {
+                    scaleOut(targetScale = 0.9f) + fadeOut()
+                } else {
+                    fadeOut(animationSpec = tween(340))
+                }
             }
         }
     }

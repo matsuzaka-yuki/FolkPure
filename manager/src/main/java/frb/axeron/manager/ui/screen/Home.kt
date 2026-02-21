@@ -53,7 +53,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
@@ -81,7 +80,9 @@ import frb.axeron.api.Axeron
 import frb.axeron.api.AxeronCommandSession
 import frb.axeron.api.AxeronPluginService
 import frb.axeron.api.core.Starter
+import frb.axeron.api.core.AxeronSettings
 import frb.axeron.manager.BuildConfig
+import frb.axeron.manager.AxeronApplication
 import frb.axeron.manager.R
 import frb.axeron.manager.ui.component.ExtraLabel
 import frb.axeron.manager.ui.component.ExtraLabelDefaults
@@ -91,7 +92,7 @@ import frb.axeron.manager.ui.component.PrivilegeCard
 import frb.axeron.manager.ui.component.rememberConfirmDialog
 import frb.axeron.manager.ui.component.rememberLoadingDialog
 import frb.axeron.manager.ui.util.checkNewVersion
-import frb.axeron.manager.ui.util.module.LatestVersionInfo
+import frb.axeron.manager.ui.util.openUpdateUrl
 import frb.axeron.manager.ui.viewmodel.ActivateViewModel
 import frb.axeron.manager.ui.viewmodel.ViewModelGlobal
 import frb.axeron.shared.AxeronApiConstant.server.VERSION_CODE
@@ -104,12 +105,48 @@ import kotlinx.coroutines.withContext
 @Destination<RootGraph>(start = true)
 @Composable
 fun HomeScreen(navigator: DestinationsNavigator, viewModelGlobal: ViewModelGlobal) {
+    HomeCircleScreen(
+        navigator = navigator,
+        activateViewModel = viewModelGlobal.activateViewModel,
+        pluginViewModel = viewModelGlobal.pluginViewModel,
+        privilegeViewModel = viewModelGlobal.privilegeViewModel
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun HomeScreenOriginal(navigator: DestinationsNavigator, viewModelGlobal: ViewModelGlobal) {
+    val context = LocalContext.current
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val pluginViewModel = viewModelGlobal.pluginViewModel
     val privilegeViewModel = viewModelGlobal.privilegeViewModel
     val activateViewModel = viewModelGlobal.activateViewModel
 
     val isRunning = activateViewModel.activateStatus is ActivateViewModel.ActivateStatus.Running
+    val prefs = AxeronSettings.getPreferences()
+    var showUpdateDialog by remember { mutableStateOf(false) }
+
+    LaunchedEffect(Unit) {
+        if (prefs.getBoolean("auto_update_check", true)) {
+            withContext(Dispatchers.IO) {
+                kotlinx.coroutines.delay(2000)
+                val hasUpdate = checkNewVersion()
+                if (hasUpdate) {
+                    showUpdateDialog = true
+                }
+            }
+        }
+    }
+
+    if (showUpdateDialog) {
+        frb.axeron.manager.ui.component.UpdateDialog(
+            onDismiss = { showUpdateDialog = false },
+            onUpdate = {
+                showUpdateDialog = false
+                openUpdateUrl(context)
+            }
+        )
+    }
 
     Scaffold(
         topBar = {
@@ -231,7 +268,6 @@ fun HomeScreen(navigator: DestinationsNavigator, viewModelGlobal: ViewModelGloba
                 }
             }
 
-            UpdateCard()
             InfoCard(activateViewModel)
 
             SupportCard()
@@ -244,7 +280,7 @@ fun HomeScreen(navigator: DestinationsNavigator, viewModelGlobal: ViewModelGloba
 @Composable
 fun SupportCard() {
     val uriHandler = LocalUriHandler.current
-    val githubFahrez182 = "https://github.com/fahrez182/AxManager"
+    val githubFahrez182 = "https://github.com/matsuzaka-yuki/FolkPure"
 
     ElevatedCard(
         onClick = {
@@ -283,7 +319,7 @@ fun SupportCard() {
 @Composable
 fun LearnCard() {
     val uriHandler = LocalUriHandler.current
-    val learnAxManager = "https://fahrez182.github.io/AxManager"
+    val learnAxManager = "https://github.com/matsuzaka-yuki/FolkPure"
 
     ElevatedCard(
         onClick = {
@@ -601,71 +637,6 @@ fun StatusCard(
 
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun UpdateCard() {
-    val latestVersionInfo = LatestVersionInfo()
-    val newVersion by produceState(initialValue = latestVersionInfo) {
-        value = withContext(Dispatchers.IO) {
-            checkNewVersion()
-        }
-    }
-
-    val currentVersionCode = BuildConfig.VERSION_CODE
-    val newVersionCode = newVersion.versionCode
-    val newVersionUrl = newVersion.downloadUrl
-    val changelog = newVersion.changelog
-
-    val uriHandler = LocalUriHandler.current
-    val title = stringResource(R.string.changelog)
-    val updateText = stringResource(R.string.update)
-    val newVersionAvailable = stringResource(R.string.new_version_available)
-
-    AnimatedVisibility(
-        visible = newVersionCode > currentVersionCode,
-        enter = fadeIn() + expandVertically(),
-        exit = shrinkVertically() + fadeOut()
-    ) {
-        val updateDialog = rememberConfirmDialog(onConfirm = { uriHandler.openUri(newVersionUrl) })
-        WarningCard(
-            message = newVersionAvailable.format(newVersionCode),
-            MaterialTheme.colorScheme.outlineVariant
-        ) {
-            if (changelog.isEmpty()) {
-                uriHandler.openUri(newVersionUrl)
-            } else {
-                updateDialog.showConfirm(
-                    title = title,
-                    content = changelog,
-                    markdown = true,
-                    confirm = updateText
-                )
-            }
-        }
-    }
-}
-
-@Composable
-fun WarningCard(
-    message: String, color: Color = MaterialTheme.colorScheme.error, onClick: (() -> Unit)? = null
-) {
-    ElevatedCard(
-        colors = CardDefaults.elevatedCardColors(
-            containerColor = color
-        )
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .then(onClick?.let { Modifier.clickable { it() } } ?: Modifier)
-                .padding(24.dp)
-        ) {
-            Text(
-                text = message, style = MaterialTheme.typography.bodyMedium
-            )
         }
     }
 }

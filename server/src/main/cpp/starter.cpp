@@ -190,7 +190,7 @@ int main(int argc, char *argv[]) {
 
     uid_t uid = getuid();
     if (uid != 0 && uid != 2000) {
-        perrorf("fatal: run AxManager from non root nor adb user (uid=%d).\n", uid);
+        perrorf("fatal: run FolkPure from non root nor adb user (uid=%d).\n", uid);
         exit(EXIT_FATAL_UID);
     }
 
@@ -241,7 +241,7 @@ int main(int argc, char *argv[]) {
         if (kill(pid, SIGKILL) == 0)
             printf("info: killed %d (%s)\n", pid, name);
         else if (errno == EPERM) {
-            perrorf("fatal: can't kill %d, please try to stop existing AxManager from app first.\n",
+            perrorf("fatal: can't kill %d, please try to stop existing FolkPure from app first.\n",
                     pid);
             exit(EXIT_FATAL_KILL);
         } else {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AxManager</string>
+    <string name="app_name">FolkPure</string>
     <string name="home_running">Running</string>
     <string name="notification_warn_miui">MIUI users may need to switch notification style to \"Android\" from \"Notification\" - \"Notification shade\" in system settings.</string>
     <string name="notification_warn_miui_2">Otherwise, you may not able to enter paring code from the notification.</string>
@@ -9,6 +9,7 @@
     <string name="android_properties">Android Properties</string>
     <string name="axeron_environment">Axeron Environment</string>
     <string name="search_label">Search</string>
+    <string name="search_settings">Search Settings</string>
     <string name="home">Home</string>
     <string name="privilege">Privilege</string>
     <string name="privilege_plural">Privileges</string>
@@ -39,7 +40,7 @@
     <string name="plugin_update_json_empty">Empty</string>
     <string name="ignite">Ignite</string>
     <string name="what_is_ignite">What Is Ignite?</string>
-    <string name="what_is_ignite_msg"><![CDATA[Ignite was a replace method of reboot in AxManager, you can ignite on Home > Reignite]]></string>
+    <string name="what_is_ignite_msg"><![CDATA[Ignite was a replace method of reboot in FolkPure, you can ignite on Home > Reignite]]></string>
     <string name="understand">I Understand</string>
     <string name="re_ignite_now">Re-ignite now</string>
     <string name="install">Install</string>
@@ -71,14 +72,14 @@
     <string name="connect_tcp_debugging">Connect to TCP</string>
     <string name="stop_tcp_debugging">Stop TCP</string>
     <string name="enable_wireless_debugging">Enable Wireless Debugging</string>
-    <string name="enable_wireless_debugging_msg">Please enable \"Wireless debugging\" in \"Developer options\". \"Wireless debugging\" is automatically disabled when network changes.\n\nNote, do not disable \"Developer options\" or \"USB debugging\", or AxManager will be stopped.</string>
+    <string name="enable_wireless_debugging_msg">Please enable \"Wireless debugging\" in \"Developer options\". \"Wireless debugging\" is automatically disabled when network changes.\n\nNote, do not disable \"Developer options\" or \"USB debugging\", or FolkPure will be stopped.</string>
     <string name="open_developer_opt">Developer</string>
     <string name="step_by_step">Step-by-Step</string>
     <string name="instruction">Instruction</string>
     <string name="enable_notification">Enable Notification</string>
     <string name="start_pairing">Start Pairing</string>
     <string name="activate_by_root">Start (for rooted devices)</string>
-    <string name="activate_by_root_msg"><![CDATA[In addition, AxManager can be started automatically on boot. If not, please check if your system or third-party tools have restricted AxManager.<br>You can refer to %s.]]></string>
+    <string name="activate_by_root_msg"><![CDATA[In addition, FolkPure can be started automatically on boot. If not, please check if your system or third-party tools have restricted FolkPure.<br>You can refer to %s.]]></string>
     <string name="adb_tcp_not_ready">ADB TCP not ready on port %d</string>
     <string name="adb_tcp_stopped">Stop ADB TCP Success</string>
     <string name="failed_to_stop_adb_tcp">Failed to stop ADB TCP</string>
@@ -112,7 +113,7 @@
     <string name="ask_install_plugin_msg">The following modules will be installed:</string>
     <string name="auto_enable_plugin">Auto enabled after install</string>
     <string name="manual_enable_plugin">Will remain disabled</string>
-    <string name="log_error_code">Error code: %d.\n %s Please save and check the log.\n</string>
+    <string name="log_error_code">Error code: %1$d.\n %2$s Please save and check the log.\n</string>
     <string name="re_ignite_and_close"><![CDATA[Re-ignite & Close]]></string>
     <string name="restart_and_close"><![CDATA[Restart & Close]]></string>
     <string name="flashing">Flashing</string>
@@ -120,9 +121,9 @@
     <string name="failed">Failed</string>
     <string name="idle">Idle</string>
     <string name="support_me">Support Me</string>
-    <string name="support_me_msg">AxManager is completely free and open-source. If you find it useful, please follow the project and consider giving it a star on GitHub.</string>
-    <string name="learn_more">Learn AxManager</string>
-    <string name="learn_more_msg">Learn how to use AxManager and how to make a plugin</string>
+    <string name="support_me_msg">FolkPure is completely free and open-source. If you find it useful, please follow the project and consider giving it a star on GitHub.</string>
+    <string name="learn_more">Learn FolkPure</string>
+    <string name="learn_more_msg">Learn how to use FolkPure and how to make a plugin</string>
     <string name="updating">Updating…</string>
     <string name="server_updating_version" formatted="false"><![CDATA[Updating: %d > %d]]></string>
     <string name="version_pid" formatted="false">Version: %d | Pid: %d</string>
@@ -131,12 +132,17 @@
     <string name="home_need_fix">Need extra step</string>
     <string name="home_need_fix_msg">Click to see how to fix</string>
     <string name="home_not_running">Need to Activate</string>
-    <string name="home_not_running_msg">Click to activating AxManager</string>
+    <string name="home_not_running_msg">Click to activating FolkPure</string>
     <string name="home_update">Need Re-Activate</string>
     <string name="new_version_available">New version %s is available, click to update.</string>
     <string name="android_version">Android Version</string>
     <string name="abi_supported">ABI Supported</string>
     <string name="selinux_context">SELinux Context</string>
+    <string name="home_click_to_install">Click to install</string>
+    <string name="home_device_info">Device Info</string>
+    <string name="home_kernel">Kernel</string>
+    <string name="home_system_version">System Version</string>
+    <string name="home_selinux_status">SELinux Status</string>
     <string name="report_issue">Having Trouble?</string>
     <string name="report_issue_msg">Encountered a bug or have feedback?</string>
     <string name="report_issue_msg2">Report it as soon as possible!</string>
@@ -144,7 +150,7 @@
     <string name="search_label_apps">Search Apps</string>
     <string name="quick_shell">QuickShell</string>
     <string name="quick_shell_short">QShell</string>
-    <string name="quick_shell_not_supported">Please activate AxManager first</string>
+    <string name="quick_shell_not_supported">Please activate FolkPure first</string>
     <string name="save">Save</string>
     <string name="exec">Exec</string>
     <string name="send">Send</string>
@@ -164,7 +170,7 @@
     <string name="axeron_permission">AX-Permission Intercept</string>
     <string name="axeron_permission_desc">Intercept permission manager built on Shizuku-API using Ax-Environment</string>
     <string name="tcp_mode">TCP Mode</string>
-    <string name="tcp_mode_desc">Allows AxManager to restart without Wi-Fi (AxManager must have started once since reboot)</string>
+    <string name="tcp_mode_desc">Allows FolkPure to restart without Wi-Fi (FolkPure must have started once since reboot)</string>
     <string name="invalid_port">Port must be between 1024 and 65535</string>
     <string name="reactive_to_apply">Re-Activate to apply changes</string>
     <string name="active_on_boot">Activate on Boot</string>
@@ -173,17 +179,16 @@
     <string name="please_wait">Please wait…</string>
     <string name="view_command_message">`%s`\n\nThere are some other considerations, please confirm that you have read the help first.</string>
     <string name="activate_by_computer">Start by connecting to a computer</string>
-    <string name="activate_by_computer_desc">For devices without root, you need to use adb to start AxManager (requires computer connection). This process needs to be repeated every time the device restarted.</string>
+    <string name="activate_by_computer_desc">For devices without root, you need to use adb to start FolkPure (requires computer connection). This process needs to be repeated every time the device restarted.</string>
     <string name="activate_by_wireless">Start via Wireless Debugging</string>
-    <string name="activate_by_wireless_desc">On Android 11 or above, you can enable Wireless debugging and start AxManager directly from your device, without connecting to a computer.\n\nPlease view step-by-step guide first.</string>
     <string name="view_command">View Command</string>
     <string name="share_command">Share Command</string>
-    <string name="active_on_boot_desc">Auto activate AxManager on boot (Root / ADB on Android 11+ (Experimental))</string>
+    <string name="active_on_boot_desc">Auto activate FolkPure on boot (Root / ADB on Android 11+ (Experimental))</string>
     <string name="ignite_when_relog">Relog to Ignite</string>
-    <string name="ignite_when_relog_desc">When you relog AxManager will Re-Ignite</string>
-    <string name="reset_path">Reset AxManager</string>
+    <string name="ignite_when_relog_desc">When you relog FolkPure will Re-Ignite</string>
+    <string name="reset_path">Reset FolkPure</string>
     <string name="reset_path_desc">This action will disable and remove all of your plugins</string>
-    <string name="ask_reset_path">Reset AxManager Now?</string>
+    <string name="ask_reset_path">Reset FolkPure Now?</string>
     <string name="ask_reset_path_desc">This action will disable and remove all of your plugins\n\nat %s</string>
     <string name="reset">Reset</string>
     <string name="settings_editor">Settings Editor</string>
@@ -208,4 +213,25 @@
     <string name="permission_dont_allow">Don\'t Allow</string>
     <string name="permission_dont_allow_countdown">Don\'t Allow (%ds)</string>
     <string name="uid_value">UID: %d</string>
+    <string name="settings_category_connection">Connection</string>
+    <string name="settings_category_activation">Activation</string>
+    <string name="settings_category_path">Path</string>
+    <string name="settings_category_other">Other</string>
+    <string name="settings_category_appearance">Appearance</string>
+    <string name="light_theme">Light</string>
+    <string name="dark_theme">Dark</string>
+    <string name="color_palette_dialog_title">Color Palette</string>
+    <string name="tab_wheel">Wheel</string>
+    <string name="tab_rgb">RGB</string>
+    <string name="hex_label">Hex</string>
+    <string name="confirm">Confirm</string>
+    <string name="settings_check_update">Check for Updates</string>
+    <string name="settings_auto_update_check">Automatic Update Check</string>
+    <string name="settings_auto_update_check_summary">Automatically check for updates on app startup</string>
+    <string name="update_available_title">Update Available</string>
+    <string name="update_available_message">Detected that your version is too low, do you want to download the new version?</string>
+    <string name="update_action">Update</string>
+    <string name="update_close">Close</string>
+    <string name="update_latest">You are on the latest version</string>
+    <string name="update_error">Error checking for updates</string>
 </resources>

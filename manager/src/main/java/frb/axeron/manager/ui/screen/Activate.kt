@@ -212,7 +212,7 @@ fun TcpDebuggingCard(
                             Toast.makeText(context, ai.message, Toast.LENGTH_SHORT).show()
                         }
 
-                        Log.e("AxManagerStartAdb", ai.message, ai.cause)
+                        Log.e("FolkPureStartAdb", ai.message, ai.cause)
                         activateViewModel.setTryToActivate(false)
                     }
                 }
@@ -246,7 +246,7 @@ fun TcpDebuggingCard(
                             Toast.makeText(context, ai.message, Toast.LENGTH_SHORT).show()
                         }
 
-                        Log.e("AxManagerStartAdb", ai.message, ai.cause)
+                        Log.e("FolkPureStartAdb", ai.message, ai.cause)
                         activateViewModel.setTryToActivate(false)
                     }
                 }
@@ -301,8 +301,6 @@ fun WirelessDebuggingCard(
 
 
     val uriHandler = LocalUriHandler.current
-    val stepByStepUrl =
-        "https://fahrez182.github.io/AxManager/guide/user-manual.html#start-with-wireless-debugging"
 
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
@@ -331,48 +329,6 @@ fun WirelessDebuggingCard(
                 )
             }
             Spacer(modifier = Modifier.size(20.dp))
-
-            Text(
-                text = stringResource(R.string.activate_by_wireless_desc),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            Spacer(modifier = Modifier.size(20.dp))
-
-            val title = stringResource(R.string.enable_wireless_debugging)
-            val content = stringResource(R.string.enable_wireless_debugging_msg)
-            val confirm = stringResource(R.string.open_developer_opt)
-            val cancel = stringResource(R.string.cancel)
-            val neutral = stringResource(R.string.step_by_step)
-            Button(
-                onClick = {
-                    scope.launch {
-                        val confirmResult = dialogDeveloper.awaitConfirm(
-                            title = title,
-                            content = content,
-                            confirm = confirm,
-                            dismiss = cancel,
-                            neutral = neutral
-                        )
-                        if (confirmResult == ConfirmResult.Confirmed) {
-                            activateViewModel.setLaunchDevSettings(true)
-                        }
-                        if (confirmResult == ConfirmResult.Neutral) {
-                            uriHandler.openUri(stepByStepUrl)
-                        }
-                    }
-                }
-            ) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.OpenInNew,
-                    modifier = Modifier
-                        .padding(end = 10.dp)
-                        .size(16.dp),
-                    contentDescription = "Instruction"
-                )
-                Text(stringResource(R.string.instruction))
-            }
-            Spacer(modifier = Modifier.size(8.dp))
 
             LaunchedEffect(activateViewModel.devSettings) {
                 if (activateViewModel.devSettings) {
@@ -408,7 +364,7 @@ fun WirelessDebuggingCard(
                             }
                         launcherDeveloper.launch(intent)
                     }
-                    Log.d("AxManager", "launchDevSettings")
+                    Log.d("FolkPure", "launchDevSettings")
                     activateViewModel.setLaunchDevSettings(false)
                 }
             }
@@ -427,7 +383,7 @@ fun WirelessDebuggingCard(
                                 Toast.makeText(context, ai.message, Toast.LENGTH_SHORT).show()
                             }
 
-                            Log.e("AxManagerStartAdb", ai.message, ai.cause)
+                            Log.e("FolkPureStartAdb", ai.message, ai.cause)
                             activateViewModel.setTryToActivate(false)
                             if (ai is AdbStateInfo.Failed) {
                                 activateViewModel.startPairingService(context)
