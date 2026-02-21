@@ -1,11 +1,13 @@
 # FolkPure
 
-> 🌸 A beautifully designed fork of AxManager with enhanced translations and improved user experience.
+> 🌸 A beautifully designed fork of [AxManager](https://github.com/fahrez182/AxManager) with enhanced translations and improved user experience.
 
-**FolkPure** is an Android application designed to provide deeper control over apps and the system.  
-Built upon the foundation of **AxManager**, FolkPure focuses on delivering an **elegant user interface**, **comprehensive multi-language support**, and **smoother interactions** to enhance the overall user experience.
+**FolkPure** is a fork of the original **[AxManager](https://github.com/fahrez182/AxManager)** project developed by **fahrez182**.
 
-Unlike tools such as *KernelSU* or other root-based "Managers," **FolkPure** is dedicated to **ADB/Non-Root mode** — while still allowing execution with **Root access** if available.
+AxManager is an Android application designed to provide deeper control over apps and the system.  
+FolkPure builds upon this foundation, focusing on delivering an **elegant user interface**, **comprehensive multi-language support**, and **smoother interactions** to enhance the overall user experience.
+
+Unlike tools such as *KernelSU* or other root-based "Managers," **FolkPure** (like AxManager) is dedicated to **ADB/Non-Root mode** — while still allowing execution with **Root access** if available.
 
 ## ✨ Features
 
@@ -72,9 +74,18 @@ adb install manager/build/outputs/apk/debug/FolkPure_v*.apk
 Contributions are welcome!  
 Feel free to open **issues**, submit **pull requests**, or start a discussion for new ideas and improvements.
 
-## 🙏 Credits
+## 🙏 Credits & Acknowledgments
 
-- **[AxManager](https://github.com/fahrez182/AxManager)** - The original project that FolkPure is based on
+### Original Project
+**[AxManager](https://github.com/fahrez182/AxManager)** by **fahrez182**
+
+FolkPure is a fork of AxManager. The original AxManager project is developed and maintained by fahrez182.
+- Repository: https://github.com/fahrez182/AxManager
+- Author: fahrez182
+
+**Important**: If you redistribute or modify this project, please retain attribution to the original developer, fahrez182.
+
+### Inspiration & References
 - **[Magisk](https://github.com/topjohnwu/Magisk)** - Inspiration for BusyBox and Plugin (Unrooted module) ideas
 - **[Shizuku](https://github.com/RikkaApps/Shizuku) / [API](https://github.com/RikkaApps/Shizuku-API)** - Starting point and reference for learning Android IPC and ADB-based permission handling
 - **[KernelSU](https://github.com/tiann/KernelSU) / [Next](https://github.com/KernelSU-Next/KernelSU-Next)** - Inspiration for the UI and WebUI features
