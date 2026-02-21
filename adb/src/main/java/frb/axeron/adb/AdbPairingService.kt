@@ -82,7 +82,7 @@ class AdbPairingService : Service() {
         getSystemService(NotificationManager::class.java).createNotificationChannel(
             NotificationChannel(
                 NOTIFICATION_CHANNEL,
-                "Wireless Debugging Pairing",
+                getString(R.string.adb_pairing_channel_name),
                 NotificationManager.IMPORTANCE_HIGH
             ).apply {
                 setSound(null, null)
@@ -188,22 +188,22 @@ class AdbPairingService : Service() {
         if (success) {
             Log.i(TAG, "Pair succeed")
 
-            title = "Pairing successfully"
-            text = "You can start AxeronService now"
+            title = getString(R.string.adb_pairing_success_title)
+            text = getString(R.string.adb_pairing_success_message)
 
             stopSearch()
         } else {
-            title = "Pairing failed"
+            title = getString(R.string.adb_pairing_failed_title)
 
             text = when (exception) {
                 is ConnectException -> {
-                    "Can't connect to wireless debugging service."
+                    getString(R.string.adb_pairing_failed_connection)
                 }
                 is AdbInvalidPairingCodeException -> {
-                    "Pairing code is wrong"
+                    getString(R.string.adb_pairing_failed_wrong_code)
                 }
                 is AdbKeyException -> {
-                    "Unable to generate key for wireless debugging service. This may.."
+                    getString(R.string.adb_pairing_failed_key_error)
                 }
                 else -> {
                     exception?.let { Log.getStackTraceString(it) }
@@ -247,7 +247,7 @@ class AdbPairingService : Service() {
 
         Notification.Action.Builder(
             null,
-            "Stop searching",
+            getString(R.string.adb_pairing_stop_searching),
             pendingIntent
         )
             .build()
@@ -266,7 +266,7 @@ class AdbPairingService : Service() {
 
         Notification.Action.Builder(
             null,
-            "Retry",
+            getString(R.string.adb_pairing_retry),
             pendingIntent
         )
             .build()
@@ -274,7 +274,7 @@ class AdbPairingService : Service() {
 
     private val replyNotificationAction by unsafeLazy {
         val remoteInput = RemoteInput.Builder(REMOTE_INPUT_RESULT_KEY).run {
-            setLabel("Pairing code")
+            setLabel(getString(R.string.adb_pairing_code_label))
             build()
         }
 
@@ -290,7 +290,7 @@ class AdbPairingService : Service() {
 
         Notification.Action.Builder(
             null,
-            "Enter pairing code",
+            getString(R.string.adb_pairing_enter_code),
             pendingIntent
         ).addRemoteInput(remoteInput).build()
     }
@@ -316,7 +316,7 @@ class AdbPairingService : Service() {
         Notification.Builder(this, NOTIFICATION_CHANNEL)
             .setColor(getColor(R.color.notification))
             .setSmallIcon(R.drawable.ic_axeron)
-            .setContentTitle("Searching for pairing service")
+            .setContentTitle(getString(R.string.adb_pairing_searching))
             .addAction(stopNotificationAction)
             .build()
     }
@@ -324,7 +324,7 @@ class AdbPairingService : Service() {
     private fun createInputNotification(port: Int): Notification {
         return Notification.Builder(this, NOTIFICATION_CHANNEL)
             .setColor(getColor(R.color.notification))
-            .setContentTitle("Pairing service found")
+            .setContentTitle(getString(R.string.adb_pairing_service_found))
             .setSmallIcon(R.drawable.ic_axeron)
             .addAction(replyNotificationAction(port))
             .build()
@@ -333,7 +333,7 @@ class AdbPairingService : Service() {
     private val workingNotification by unsafeLazy {
         Notification.Builder(this, NOTIFICATION_CHANNEL)
             .setColor(getColor(R.color.notification))
-            .setContentTitle("Pairing in progress")
+            .setContentTitle(getString(R.string.adb_pairing_in_progress))
             .setSmallIcon(R.drawable.ic_axeron)
             .build()
     }

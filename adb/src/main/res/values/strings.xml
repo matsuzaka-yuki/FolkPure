@@ -1,0 +1,17 @@
+<resources>
+    <!-- Wireless Debugging Pairing Notification -->
+    <string name="adb_pairing_channel_name">Wireless Debugging Pairing</string>
+    <string name="adb_pairing_success_title">Pairing successfully</string>
+    <string name="adb_pairing_success_message">You can start AxeronService now</string>
+    <string name="adb_pairing_failed_title">Pairing failed</string>
+    <string name="adb_pairing_failed_connection">Can\'t connect to wireless debugging service.</string>
+    <string name="adb_pairing_failed_wrong_code">Pairing code is wrong</string>
+    <string name="adb_pairing_failed_key_error">Unable to generate key for wireless debugging service. This may be due to system restrictions.</string>
+    <string name="adb_pairing_stop_searching">Stop searching</string>
+    <string name="adb_pairing_retry">Retry</string>
+    <string name="adb_pairing_code_label">Pairing code</string>
+    <string name="adb_pairing_enter_code">Enter pairing code</string>
+    <string name="adb_pairing_searching">Searching for pairing service</string>
+    <string name="adb_pairing_service_found">Pairing service found</string>
+    <string name="adb_pairing_in_progress">Pairing in progress</string>
+</resources>

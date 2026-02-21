@@ -1,0 +1,17 @@
+<resources>
+    <!-- 无线调试配对通知 -->
+    <string name="adb_pairing_channel_name">无线调试配对</string>
+    <string name="adb_pairing_success_title">配对成功</string>
+    <string name="adb_pairing_success_message">现在可以启动 Axeron 服务了</string>
+    <string name="adb_pairing_failed_title">配对失败</string>
+    <string name="adb_pairing_failed_connection">无法连接到无线调试服务</string>
+    <string name="adb_pairing_failed_wrong_code">配对码错误</string>
+    <string name="adb_pairing_failed_key_error">无法为无线调试服务生成密钥。这可能是由于系统限制导致的。</string>
+    <string name="adb_pairing_stop_searching">停止搜索</string>
+    <string name="adb_pairing_retry">重试</string>
+    <string name="adb_pairing_code_label">配对码</string>
+    <string name="adb_pairing_enter_code">输入配对码</string>
+    <string name="adb_pairing_searching">正在搜索配对服务</string>
+    <string name="adb_pairing_service_found">发现配对服务</string>
+    <string name="adb_pairing_in_progress">配对进行中</string>
+</resources>

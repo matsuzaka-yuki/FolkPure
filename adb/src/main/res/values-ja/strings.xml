@@ -1,0 +1,17 @@
+<resources>
+    <!-- ワイヤレスデバッグペアリング通知 -->
+    <string name="adb_pairing_channel_name">ワイヤレスデバッグのペアリング</string>
+    <string name="adb_pairing_success_title">ペアリング成功</string>
+    <string name="adb_pairing_success_message">これで Axeron サービスを開始できます</string>
+    <string name="adb_pairing_failed_title">ペアリング失敗</string>
+    <string name="adb_pairing_failed_connection">ワイヤレスデバッグサービスに接続できません</string>
+    <string name="adb_pairing_failed_wrong_code">ペアリングコードが間違っています</string>
+    <string name="adb_pairing_failed_key_error">ワイヤレスデバッグサービスのキーを生成できません。これはシステムの制限によるものかもしれません。</string>
+    <string name="adb_pairing_stop_searching">検索を停止</string>
+    <string name="adb_pairing_retry">再試行</string>
+    <string name="adb_pairing_code_label">ペアリングコード</string>
+    <string name="adb_pairing_enter_code">ペアリングコードを入力</string>
+    <string name="adb_pairing_searching">ペアリングサービスを検索中</string>
+    <string name="adb_pairing_service_found">ペアリングサービスが見つかりました</string>
+    <string name="adb_pairing_in_progress">ペアリング中</string>
+</resources>

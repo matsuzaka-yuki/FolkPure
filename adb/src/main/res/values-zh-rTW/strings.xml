@@ -1,0 +1,17 @@
+<resources>
+    <!-- 無線除錯配對通知 -->
+    <string name="adb_pairing_channel_name">無線除錯配對</string>
+    <string name="adb_pairing_success_title">配對成功</string>
+    <string name="adb_pairing_success_message">現在可以啟動 Axeron 服務了</string>
+    <string name="adb_pairing_failed_title">配對失敗</string>
+    <string name="adb_pairing_failed_connection">無法連接到無線除錯服務</string>
+    <string name="adb_pairing_failed_wrong_code">配對碼錯誤</string>
+    <string name="adb_pairing_failed_key_error">無法為無線除錯服務產生金鑰。這可能是由於系統限制導致的。</string>
+    <string name="adb_pairing_stop_searching">停止搜尋</string>
+    <string name="adb_pairing_retry">重試</string>
+    <string name="adb_pairing_code_label">配對碼</string>
+    <string name="adb_pairing_enter_code">輸入配對碼</string>
+    <string name="adb_pairing_searching">正在搜尋配對服務</string>
+    <string name="adb_pairing_service_found">發現配對服務</string>
+    <string name="adb_pairing_in_progress">配對進行中</string>
+</resources>
